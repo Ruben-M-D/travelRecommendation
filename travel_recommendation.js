@@ -14,10 +14,9 @@ function search() {
         .then(data => {
             let resultsFound = false; 
 
-            const matchingCountries = data.countries.filter(country => country.name.toLowerCase().includes(searchValue));
-            if (matchingCountries.length > 0) {
+            if (searchValue.includes("country") || searchValue.includes("countries")) {
                 resultsFound = true;
-                matchingCountries.forEach(country => {
+                data.countries.forEach(country => {
                     country.cities.forEach(city => {
                         resultDiv.innerHTML += `
                             <div>
@@ -27,6 +26,21 @@ function search() {
                         `;
                     });
                 });
+            } else {
+                const matchingCountries = data.countries.filter(country => country.name.toLowerCase().includes(searchValue));
+                if (matchingCountries.length > 0) {
+                    resultsFound = true;
+                    matchingCountries.forEach(country => {
+                        country.cities.forEach(city => {
+                            resultDiv.innerHTML += `
+                                <div>
+                                    <img src="${city.imageUrl}" alt="${city.name}">
+                                    <p><strong>${city.name}</strong></p>
+                                </div>
+                            `;
+                        });
+                    });
+                }
             }
 
             const matchingBeaches = data.beaches.filter(beach => beach.name.toLowerCase().includes(searchValue));
