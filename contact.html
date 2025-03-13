@@ -26,12 +26,24 @@
             <input id="name" title="name" placeholder="name.."/>
             <input id="email" title="email" placeholder="email...." />
             <textarea title="message" placeholder="Message..........."></textarea>  
-            <button id="submitbtn" onclick="{alert('Thanks for your submission')}" >Submit</button>
+            <button id="submitbtn" >Submit</button>
         </div>
     </div>
 
 </div>
 
-<script src="./travel_recommendation.js"></script>
+<script>
+  {
+    const submitBtn = document.getElementById("submitbtn");
+    function onSubmitB() {
+    const name = document.getElementById("name").value.toLowerCase();
+
+    alert(`Thanks for your submission ${name}`);
+}
+submitBtn.addEventListener('click', onSubmitB);
+
+  }
+
+</script>
 </body>
 </html>
