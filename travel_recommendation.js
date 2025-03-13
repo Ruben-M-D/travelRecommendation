@@ -1,11 +1,6 @@
 const searchBtn = document.getElementById("btnSearch");
-const submitBtn = document.getElementById("submitbtn");
 
-function onSubmitB() {
-    const name = document.getElementById("name").value.toLowerCase();
 
-    alert(`Thanks for your submission ${name}`);
-}
 
 function search() {
     const searchValue = document.getElementById("searchInput").value.toLowerCase();
@@ -68,4 +63,3 @@ function search() {
 }
 
 searchBtn.addEventListener('click', search);
-submitBtn.addEventListener('click', onSubmitB);
